@@ -6,11 +6,11 @@ from PIL import Image
 st.title("Classificador de Dígitos – CNN (MNIST)")
 st.write("Envie uma imagem 28x28 em tons de cinza.")
 
-# Correção necessária para softmax_v2
+
 from tensorflow.keras.activations import softmax
 custom_objects = {'softmax_v2': softmax}
 
-# Carregar o modelo treinado
+
 model = tf.keras.models.load_model("final_CNN_model.h5", custom_objects=custom_objects)
 
 uploaded_file = st.file_uploader("Envie uma imagem", type=["png", "jpg", "jpeg"])
@@ -25,3 +25,4 @@ if uploaded_file:
     digit = np.argmax(pred)
 
     st.subheader(f"🔢 Dígito previsto: **{digit}**")
+
